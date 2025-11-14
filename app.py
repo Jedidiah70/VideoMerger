@@ -17,6 +17,9 @@ logging.basicConfig(level=logging.INFO)
 # FLASK APP SETUP
 # -----------------------------
 app = Flask(__name__)
+@app.route('/')
+def home():
+    return "Video Merger API is running! Use /generate_video?sentence=YOUR_SENTENCE"
 
 # -----------------------------
 # FIREBASE CONFIG
