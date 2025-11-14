@@ -27,8 +27,16 @@ def home():
 # NOTE: In a production environment, you should use environment variables
 # to store the service account JSON content or path. For Render, upload
 # the JSON file and reference it here, or store its content in an ENV variable.
+# -----------------------------
+# FIREBASE CONFIG (ENV variable)
+# -----------------------------
 try:
-    cred = credentials.Certificate("timetable-2e38f-firebase-adminsdk-fbsvc-84314263fb.json")  # your service account path
+    import json
+    firebase_json = os.environ.get("FIREBASE_JSON")
+    if not firebase_json:
+        raise ValueError("FIREBASE_JSON environment variable not set.")
+    
+    cred = credentials.Certificate(json.loads(firebase_json))
     firebase_admin.initialize_app(cred, {
         'storageBucket': 'timetable-2e38f.firebasestorage.app'
     })
@@ -37,6 +45,7 @@ try:
 except Exception as e:
     logging.error(f"Error initializing Firebase: {e}")
     bucket = None
+
 
 # -----------------------------
 # GEMINI CONFIG
