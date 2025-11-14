@@ -5,7 +5,7 @@ import os
 import tempfile
 import firebase_admin
 from firebase_admin import credentials, storage
-import moviepy.editor as mp
+import moviepy as mp
 import google.generativeai as genai
 from flask import Flask, request, send_file
 import logging
@@ -25,7 +25,7 @@ app = Flask(__name__)
 # to store the service account JSON content or path. For Render, upload
 # the JSON file and reference it here, or store its content in an ENV variable.
 try:
-    cred = credentials.Certificate("timetable-2e38f-firebase-adminsdk-fbsvc-bd0ec6a380.json")  # your service account path
+    cred = credentials.Certificate("timetable-2e38f-firebase-adminsdk-fbsvc-84314263fb.json")  # your service account path
     firebase_admin.initialize_app(cred, {
         'storageBucket': 'timetable-2e38f.firebasestorage.app'
     })
