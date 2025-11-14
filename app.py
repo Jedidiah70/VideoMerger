@@ -195,6 +195,5 @@ def generate_video():
 # SERVER STARTUP
 # -----------------------------
 if __name__ == '__main__':
-    # Use 0.0.0.0 and port 10000 or the port specified by Render for production
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    port = int(os.environ.get('PORT', 10000))  # Render will override this
+    app.run(host='0.0.0.0', port=port)
